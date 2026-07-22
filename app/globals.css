@@ -1,0 +1,291 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* -------------------------------------------------------------------------
+   Bara Pro CI — Design System (Tailwind CSS v4)
+   Le thème est piloté par des variables CSS. next-themes bascule la classe
+   `.dark` sur <html>. La variante `dark:` de Tailwind est câblée dessus.
+   ------------------------------------------------------------------------- */
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.85rem;
+
+  /* --- Palette de marque (constante en clair/sombre) --- */
+  --brand-orange: #ff7a00; /* Orange principal */
+  --brand-orange-deep: #e85d00; /* Orange profond   */
+  --brand-green: #0b8a3d; /* Vert ivoirien    */
+  --brand-green-deep: #066a2e; /* Vert profond     */
+  --brand-gold: #f4b740; /* Or / accent      */
+  --brand-ink: #14201a; /* Encre foncée     */
+  --brand-ivory: #fffcf7; /* Ivoire / fond    */
+
+  /* --- Tokens sémantiques : thème CLAIR --- */
+  --background: #fffcf7;
+  --foreground: #14201a;
+  --card: #ffffff;
+  --card-foreground: #14201a;
+  --popover: #ffffff;
+  --popover-foreground: #14201a;
+  --primary: #ff7a00;
+  --primary-foreground: #ffffff;
+  --secondary: #f4efe6;
+  --secondary-foreground: #2a3830;
+  --muted: #f4efe6;
+  --muted-foreground: #5e6a62;
+  --accent: #fdf0d6;
+  --accent-foreground: #7a4e00;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --success: #0b8a3d;
+  --success-foreground: #ffffff;
+  --border: #ece5d8;
+  --input: #e4dccc;
+  --ring: #ff7a00;
+}
+
+.dark {
+  /* --- Tokens sémantiques : thème SOMBRE (encre verte profonde) --- */
+  --background: #0b120e;
+  --foreground: #f1efe9;
+  --card: #121b15;
+  --card-foreground: #f1efe9;
+  --popover: #121b15;
+  --popover-foreground: #f1efe9;
+  --primary: #ff8a1e;
+  --primary-foreground: #1a0e00;
+  --secondary: #1a2620;
+  --secondary-foreground: #eef2ec;
+  --muted: #1a2620;
+  --muted-foreground: #9ba79d;
+  --accent: #2a2113;
+  --accent-foreground: #f4b740;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --success: #22b061;
+  --success-foreground: #04120a;
+  --border: #24312a;
+  --input: #2b3a32;
+  --ring: #ff8a1e;
+}
+
+/* -------------------------------------------------------------------------
+   Mapping des tokens vers les utilitaires Tailwind (bg-primary, text-muted…)
+   ------------------------------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Couleurs de marque exposées : bg-brand-orange, text-brand-green, … */
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-deep: var(--brand-orange-deep);
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-deep: var(--brand-green-deep);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-ivory: var(--brand-ivory);
+
+  /* Typographies (câblées dans app/layout.tsx via next/font) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), sans-serif;
+
+  /* Rayons */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 10px);
+
+  /* Conteneur centré */
+  --breakpoint-2xl: 88rem;
+
+  /* Animations personnalisées */
+  --animate-accordion-down: accordion-down 0.25s ease-out;
+  --animate-accordion-up: accordion-up 0.25s ease-out;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-vertical: marquee-vertical 30s linear infinite;
+  --animate-radar-pulse: radar-pulse 2.4s ease-out infinite;
+}
+
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.25);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - 0.5rem));
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--brand-orange) 25%, transparent);
+    color: var(--foreground);
+  }
+
+  /* Anneau de focus accessible et cohérent */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Utilitaires premium (gradients, glassmorphism, motifs)
+   ------------------------------------------------------------------------- */
+@layer utilities {
+  /* Dégradé de marque orange -> or, pour les titres et accents */
+  .text-gradient-brand {
+    background-image: linear-gradient(
+      100deg,
+      var(--brand-orange-deep),
+      var(--brand-orange) 45%,
+      var(--brand-gold)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Dégradé subtil orange -> vert : identité ivoirienne moderne */
+  .bg-gradient-brand {
+    background-image: linear-gradient(
+      135deg,
+      var(--brand-orange) 0%,
+      var(--brand-orange-deep) 55%,
+      var(--brand-green-deep) 130%
+    );
+  }
+
+  /* Glassmorphism léger */
+  .glass {
+    background-color: color-mix(in oklab, var(--card) 72%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+  }
+
+  /* Halo lumineux derrière un élément (hero, cartes en avant) */
+  .glow-brand {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--brand-orange) 15%, transparent),
+      0 20px 60px -20px color-mix(in oklab, var(--brand-orange) 45%, transparent);
+  }
+
+  /* Motif géométrique africain subtil (points) en fond */
+  .pattern-dots {
+    background-image: radial-gradient(
+      color-mix(in oklab, var(--foreground) 12%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  /* Ombre douce premium réutilisable */
+  .shadow-soft {
+    box-shadow:
+      0 1px 2px color-mix(in oklab, var(--brand-ink) 6%, transparent),
+      0 12px 40px -12px color-mix(in oklab, var(--brand-ink) 14%, transparent);
+  }
+
+  /* Masque de dégradé pour faire disparaître les bords (fils, carrousels) */
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+}
