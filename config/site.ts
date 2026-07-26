@@ -13,9 +13,8 @@ export const siteConfig = {
     "menuisiers et mécaniciens de confiance grâce à un fil de talents en vidéo.",
   // URL publique du site (SEO, Open Graph, sitemap, liens de partage).
   // En local, `.env.local` la met à http://localhost:3000. En prod (Vercel),
-  // la variable n'étant pas définie, on retombe sur le domaine de production.
-  // Pour un domaine perso (ex. barapro.ci), définir NEXT_PUBLIC_SITE_URL.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://bara-pro-ci-2.vercel.app",
+  // la variable n'étant pas définie, on retombe sur le domaine officiel.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.baraproci.online",
   locale: "fr_CI",
   city: "Abidjan, Côte d'Ivoire",
   email: "holy.corporation.us@gmail.com",
