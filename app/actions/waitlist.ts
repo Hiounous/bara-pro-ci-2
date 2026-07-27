@@ -72,6 +72,18 @@ export async function joinWaitlist(
 
   const alreadyIn = error?.code === "23505";
 
+  // --- Abonnement à la newsletter ---
+  // Les inscrits à la liste d'attente veulent suivre l'actualité du lancement :
+  // on les ajoute aussi à la newsletter (doublon ignoré, désinscription
+  // possible à tout moment). Un échec ici ne compromet pas l'inscription.
+  const { error: newsletterError } = await supabase
+    .from("newsletter")
+    .insert({ email, source: "liste-attente" });
+
+  if (newsletterError && newsletterError.code !== "23505") {
+    console.error("[waitlist] abonnement newsletter échoué:", newsletterError);
+  }
+
   // --- Email de confirmation (seulement pour une nouvelle inscription) ---
   const resend = getResend();
   if (resend && !alreadyIn) {

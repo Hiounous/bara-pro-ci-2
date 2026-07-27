@@ -79,6 +79,7 @@ export default function ConfidentialitePage() {
                 "Votre profil : client ou artisan ;",
                 "Pour les artisans : votre métier et votre ville (facultatifs) ;",
                 "La page depuis laquelle vous vous êtes inscrit et la date d'inscription.",
+                "Votre adresse est également ajoutée à notre newsletter afin de vous transmettre les actualités du lancement ; vous pouvez vous en désinscrire à tout moment.",
               ]}
             />
             <p className="font-medium text-foreground">b. Création d&apos;un compte</p>
@@ -114,6 +115,7 @@ export default function ConfidentialitePage() {
             <LegalList
               items={[
                 "Vous informer du lancement et vous donner un accès prioritaire, si vous êtes inscrit sur la liste d'attente ;",
+                "Vous transmettre les actualités du projet par email — chaque envoi comporte un lien de désinscription ;",
                 "Créer et sécuriser votre compte, et vous permettre de vous connecter ;",
                 "Vous envoyer les emails liés à votre compte (confirmation d'inscription, réinitialisation de mot de passe) ;",
                 "Vous adresser notre newsletter, si vous y avez consenti ;",

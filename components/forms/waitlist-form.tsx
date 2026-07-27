@@ -180,8 +180,8 @@ export function WaitlistForm({
         )}
       </Button>
       <p className="text-center text-xs text-muted-foreground">
-        Gratuit, sans engagement. Pas de spam — promis. En vous inscrivant, vous
-        acceptez notre{" "}
+        Gratuit, sans engagement. Vous recevrez nos actualités du lancement —
+        désinscription en un clic. En vous inscrivant, vous acceptez notre{" "}
         <Link
           href="/confidentialite"
           className="underline underline-offset-2 hover:text-primary"
