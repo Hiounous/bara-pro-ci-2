@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
@@ -179,7 +180,15 @@ export function WaitlistForm({
         )}
       </Button>
       <p className="text-center text-xs text-muted-foreground">
-        Gratuit, sans engagement. Pas de spam — promis.
+        Gratuit, sans engagement. Pas de spam — promis. En vous inscrivant, vous
+        acceptez notre{" "}
+        <Link
+          href="/confidentialite"
+          className="underline underline-offset-2 hover:text-primary"
+        >
+          politique de confidentialité
+        </Link>
+        .
       </p>
     </form>
   );

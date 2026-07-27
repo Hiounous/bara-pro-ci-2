@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
@@ -196,6 +197,23 @@ export function SignUpForm() {
       <p className="flex items-center justify-center gap-1.5 text-center text-xs text-muted-foreground">
         <CheckCircle2 className="size-3.5 text-brand-green" />
         Gratuit, sans engagement.
+      </p>
+      <p className="text-center text-xs text-muted-foreground">
+        En créant un compte, vous acceptez nos{" "}
+        <Link
+          href="/conditions"
+          className="underline underline-offset-2 hover:text-primary"
+        >
+          conditions d&apos;utilisation
+        </Link>{" "}
+        et notre{" "}
+        <Link
+          href="/confidentialite"
+          className="underline underline-offset-2 hover:text-primary"
+        >
+          politique de confidentialité
+        </Link>
+        .
       </p>
     </form>
   );
