@@ -231,8 +231,8 @@ export function FeedDemo() {
             aria-hidden
           />
 
-          {/* Onglets du haut */}
-          <div className="pointer-events-none absolute inset-x-0 top-4 z-40 flex justify-center gap-6 text-[13px] font-semibold">
+          {/* Onglets du haut (placés sous l'encoche pour rester lisibles) */}
+          <div className="pointer-events-none absolute inset-x-0 top-11 z-40 flex justify-center gap-6 text-[13px] font-semibold">
             <span className="opacity-60">Abonnements</span>
             <span className="border-b-2 border-white pb-1">Pour toi</span>
           </div>
@@ -285,7 +285,7 @@ export function FeedDemo() {
                   </AnimatePresence>
 
                   {/* Étiquette de contexte */}
-                  <span className="pointer-events-none absolute left-4 top-14 z-10 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 text-[11px] font-semibold backdrop-blur">
+                  <span className="pointer-events-none absolute left-4 top-20 z-10 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 text-[11px] font-semibold backdrop-blur">
                     <BadgeIcon className="size-3 text-brand-gold" />
                     {post.badge}
                   </span>
@@ -394,7 +394,7 @@ export function FeedDemo() {
                       <Star className="size-3 fill-brand-gold" />
                       <span className="text-white">{post.rating}</span>
                       <span className="text-white/70">
-                        · {post.reviews} avis · {post.years} ans d&apos;expérience
+                        {`· ${post.reviews} avis · ${post.years} ans d'expérience`}
                       </span>
                     </p>
                     <button
