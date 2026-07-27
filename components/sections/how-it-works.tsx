@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import {
+  BadgeCheck,
   CalendarCheck,
   HardHat,
+  Heart,
   MessageSquare,
   Search,
   Star,
@@ -12,6 +14,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { FeedDemo } from "@/components/sections/feed-demo";
+import { Badge } from "@/components/ui/badge";
 
 type Step = {
   icon: LucideIcon;
@@ -79,8 +83,78 @@ export function HowItWorks() {
       </TabsContent>
       <TabsContent value="artisan" className="w-full">
         <StepGrid steps={artisanSteps} />
+        <ArtisanFeedShowcase />
       </TabsContent>
     </Tabs>
+  );
+}
+
+/**
+ * Démonstration destinée aux artisans : montre concrètement comment leur
+ * travail apparaît dans le fil de talents, du point de vue des clients.
+ */
+function ArtisanFeedShowcase() {
+  const arguments_ = [
+    {
+      icon: Video,
+      title: "Votre travail en vedette",
+      text: "Chaque vidéo occupe tout l'écran : le client voit votre savoir-faire, pas une simple annonce.",
+    },
+    {
+      icon: BadgeCheck,
+      title: "Votre badge de confiance",
+      text: "Métier, quartier, note et nombre d'avis affichés en permanence à côté de votre nom.",
+    },
+    {
+      icon: Heart,
+      title: "Une audience qui vous suit",
+      text: "Likes, favoris et abonnés : vos meilleures réalisations continuent de travailler pour vous.",
+    },
+    {
+      icon: CalendarCheck,
+      title: "La réservation à portée de pouce",
+      text: "Un bouton « Réserver » sur chaque vidéo — le client passe de la découverte à la demande en un geste.",
+    },
+  ];
+
+  return (
+    <div className="mt-16 border-t pt-14">
+      <div className="mx-auto mb-12 flex max-w-2xl flex-col items-center gap-4 text-center">
+        <Badge variant="green">Aperçu en direct</Badge>
+        <h3 className="text-balance text-2xl font-bold sm:text-3xl">
+          Votre vitrine,{" "}
+          <span className="text-gradient-brand">vue par les clients</span>
+        </h3>
+        <p className="text-pretty text-muted-foreground">
+          Voici exactement à quoi ressemble le fil de talents. Faites défiler,
+          likez, abonnez-vous : c&apos;est l&apos;expérience que vivront vos
+          futurs clients.
+        </p>
+      </div>
+
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="order-2 flex flex-col gap-6 lg:order-1">
+          {arguments_.map((a) => {
+            const Icon = a.icon;
+            return (
+              <div key={a.title} className="flex items-start gap-4">
+                <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  <Icon className="size-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-display font-semibold">{a.title}</h4>
+                  <p className="mt-1 text-sm text-muted-foreground">{a.text}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="order-1 lg:order-2">
+          <FeedDemo />
+        </div>
+      </div>
+    </div>
   );
 }
 

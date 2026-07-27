@@ -125,6 +125,26 @@
   --animate-marquee: marquee 40s linear infinite;
   --animate-marquee-vertical: marquee-vertical 30s linear infinite;
   --animate-radar-pulse: radar-pulse 2.4s ease-out infinite;
+  --animate-feed-drift: feed-drift 9s ease-in-out infinite alternate;
+  --animate-feed-progress: feed-progress 8s linear infinite;
+}
+
+@keyframes feed-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(14%, 10%);
+  }
+}
+
+@keyframes feed-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 @keyframes radar-pulse {
