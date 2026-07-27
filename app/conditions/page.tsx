@@ -67,8 +67,7 @@ export default function ConditionsPage() {
                   <strong>Contact :</strong> {siteConfig.email} — {siteConfig.phone}
                 </>,
                 <>
-                  <strong>Directeur de la publication :</strong>{" "}
-                  <em>[nom du représentant légal à compléter]</em>
+                  <strong>Directeur de la publication :</strong> KAMARA Hiounous
                 </>,
                 <>
                   <strong>Hébergement du site :</strong> Vercel Inc. (États-Unis) —
