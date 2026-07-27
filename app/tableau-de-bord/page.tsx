@@ -11,12 +11,14 @@ import {
   Settings,
   Sparkles,
   Star,
+  Users,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { LogoutButton } from "@/components/auth/logout-button";
 import { getCurrentUser, getProfile } from "@/lib/supabase/server";
+import { isAdminEmail } from "@/lib/admin";
 import { isSupabaseAuthConfigured } from "@/lib/env";
 
 export const metadata: Metadata = {
@@ -41,6 +43,7 @@ export default async function TableauDeBordPage() {
   const displayName =
     profile?.full_name || user.email?.split("@")[0] || "Bienvenue";
   const isArtisan = role === "artisan";
+  const isAdmin = isAdminEmail(user.email);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
@@ -98,6 +101,31 @@ export default async function TableauDeBordPage() {
           </Link>
         </Button>
       </Card>
+
+      {/* Accès admin (visible uniquement pour les comptes administrateurs) */}
+      {isAdmin && (
+        <Card className="mt-6 flex flex-col items-start gap-4 border-brand-gold/40 bg-brand-gold/5 p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-3">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-gold/15">
+              <Users className="size-5 text-accent-foreground" />
+            </span>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="font-display text-lg font-semibold">
+                  Espace administrateur
+                </h2>
+                <Badge variant="gold">Admin</Badge>
+              </div>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Liste d&apos;attente, newsletter, statistiques et exports CSV.
+              </p>
+            </div>
+          </div>
+          <Button asChild variant="brand" size="sm">
+            <Link href="/tableau-de-bord/admin">Ouvrir l&apos;admin</Link>
+          </Button>
+        </Card>
+      )}
 
       {/* Cartes de fonctionnalités à venir (adaptées au rôle) */}
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
