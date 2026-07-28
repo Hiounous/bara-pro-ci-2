@@ -1,5 +1,6 @@
 import "server-only";
 import type { Campaign } from "@/lib/newsletter/campaigns";
+import { EMAIL_LOGO_URL } from "@/lib/email-assets";
 import { siteConfig } from "@/config/site";
 
 /**
@@ -68,13 +69,16 @@ export function renderNewsletter(
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#FFFFFF;border:1px solid ${BRAND.border};border-radius:16px;overflow:hidden;">
 
-        <!-- En-tête -->
-        <tr><td style="padding:26px 28px 0;">
-          <div style="font-size:20px;font-weight:800;letter-spacing:-0.5px;color:${BRAND.ink};">
-            BARA<span style="color:${BRAND.orange};">PRO</span>
-            <span style="background:${BRAND.green};color:#fff;font-size:11px;padding:2px 7px;border-radius:6px;margin-left:4px;vertical-align:middle;">CI</span>
+        <!-- En-tête : logo officiel (texte de repli si les images sont bloquées) -->
+        <tr><td align="center" style="padding:26px 28px 0;">
+          <a href="${site}" style="text-decoration:none;">
+            <img src="${EMAIL_LOGO_URL}" width="86" height="86" alt="Bara Pro CI"
+                 style="display:block;margin:0 auto 6px;width:86px;height:86px;border:0;outline:none;text-decoration:none;">
+          </a>
+          <div style="font-size:12px;font-weight:600;color:${BRAND.muted};letter-spacing:0.4px;">
+            ${escapeHtml(siteConfig.slogan)}
           </div>
-          <div style="height:3px;width:52px;background:${BRAND.orange};border-radius:3px;margin:14px 0 0;"></div>
+          <div style="height:3px;width:52px;background:${BRAND.orange};border-radius:3px;margin:16px auto 0;"></div>
         </td></tr>
 
         <!-- Contenu -->

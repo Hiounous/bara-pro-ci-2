@@ -1,4 +1,5 @@
 import "server-only";
+import { EMAIL_LOGO_URL } from "@/lib/email-assets";
 
 /**
  * Petits gabarits d'email en HTML inline (compatibles clients mail).
@@ -18,9 +19,8 @@ function shell(title: string, body: string) {
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"></head>
 <body style="margin:0;background:${BRAND.ivory};font-family:Inter,Arial,sans-serif;color:${BRAND.ink};">
   <div style="max-width:520px;margin:0 auto;padding:32px 24px;">
-    <div style="font-size:20px;font-weight:800;letter-spacing:-.5px;">
-      Bara<span style="color:${BRAND.orange}">Pro</span> <span style="color:${BRAND.muted};font-weight:600">CI</span>
-    </div>
+    <img src="${EMAIL_LOGO_URL}" width="78" height="78" alt="Bara Pro CI"
+         style="display:block;width:78px;height:78px;border:0;outline:none;text-decoration:none;">
     <div style="height:4px;width:56px;background:${BRAND.orange};border-radius:4px;margin:16px 0 24px;"></div>
     <h1 style="font-size:22px;margin:0 0 16px;">${title}</h1>
     ${body}
