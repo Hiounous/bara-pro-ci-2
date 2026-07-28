@@ -4,6 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import {
   ArrowLeft,
   Download,
+  Eye,
   HardHat,
   Mail,
   Search,
@@ -110,9 +111,14 @@ export default async function AdminPage() {
               <Download className="size-4" /> Export newsletter
             </a>
           </Button>
+          <Button asChild variant="outline" size="sm">
+            <a href="/api/newsletter/preview" target="_blank">
+              <Eye className="size-4" /> Aperçu newsletter
+            </a>
+          </Button>
           <Button asChild variant="green" size="sm">
             <a href="/tableau-de-bord/admin/newsletter" target="_blank">
-              <Send className="size-4" /> Tester la newsletter
+              <Send className="size-4" /> M&apos;envoyer un test
             </a>
           </Button>
         </div>
