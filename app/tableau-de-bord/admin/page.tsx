@@ -7,6 +7,7 @@ import {
   HardHat,
   Mail,
   Search,
+  Send,
   Users,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -98,7 +99,7 @@ export default async function AdminPage() {
             {lastWeek} inscription{lastWeek > 1 ? "s" : ""} ces 7 derniers jours
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Button asChild variant="outline" size="sm">
             <a href="/tableau-de-bord/admin/export?table=waitlist">
               <Download className="size-4" /> Export waitlist
@@ -107,6 +108,11 @@ export default async function AdminPage() {
           <Button asChild variant="outline" size="sm">
             <a href="/tableau-de-bord/admin/export?table=newsletter">
               <Download className="size-4" /> Export newsletter
+            </a>
+          </Button>
+          <Button asChild variant="green" size="sm">
+            <a href="/tableau-de-bord/admin/newsletter" target="_blank">
+              <Send className="size-4" /> Tester la newsletter
             </a>
           </Button>
         </div>
