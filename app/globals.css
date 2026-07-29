@@ -126,7 +126,18 @@
   --animate-marquee-vertical: marquee-vertical 30s linear infinite;
   --animate-radar-pulse: radar-pulse 2.4s ease-out infinite;
   --animate-feed-drift: feed-drift 9s ease-in-out infinite alternate;
+  --animate-feed-zoom: feed-zoom 14s ease-in-out infinite alternate;
   --animate-feed-progress: feed-progress 8s linear infinite;
+}
+
+/* Zoom très lent sur les photos du fil : évoque une vidéo en lecture. */
+@keyframes feed-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
 }
 
 @keyframes feed-drift {

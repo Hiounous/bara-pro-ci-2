@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   BadgeCheck,
@@ -55,6 +56,9 @@ type DemoPost = {
   comments: number;
   saves: number;
   shares: number;
+  /** Photo d'illustration du métier (libre de droits, sans visage). */
+  photo: string;
+  /** Dégradé de repli affiché pendant le chargement de la photo. */
   background: string;
 };
 
@@ -78,6 +82,7 @@ const posts: DemoPost[] = [
     comments: 184,
     saves: 312,
     shares: 96,
+    photo: "/artisans/electricien.jpg",
     background: "linear-gradient(160deg,#3B2A12 0%,#7A4A08 45%,#C46A00 100%)",
   },
   {
@@ -99,6 +104,7 @@ const posts: DemoPost[] = [
     comments: 347,
     saves: 689,
     shares: 210,
+    photo: "/artisans/peintre.jpg",
     background: "linear-gradient(160deg,#0E2B1A 0%,#14502C 50%,#1F8A48 100%)",
   },
   {
@@ -120,6 +126,7 @@ const posts: DemoPost[] = [
     comments: 512,
     saves: 1204,
     shares: 430,
+    photo: "/artisans/plombier.jpg",
     background: "linear-gradient(160deg,#241633 0%,#4A2A66 50%,#7A44A8 100%)",
   },
   {
@@ -141,6 +148,7 @@ const posts: DemoPost[] = [
     comments: 228,
     saves: 540,
     shares: 151,
+    photo: "/artisans/menuisier.jpg",
     background: "linear-gradient(160deg,#331A12 0%,#6E3018 50%,#B0501F 100%)",
   },
 ];
@@ -251,20 +259,23 @@ export function FeedDemo() {
                   key={post.id}
                   className="relative flex h-full snap-start snap-always flex-col justify-end overflow-hidden"
                 >
-                  {/* Fond « vidéo » simulé */}
+                  {/* Fond « vidéo » : photo du métier + léger mouvement */}
                   <button
                     type="button"
                     onClick={() => handleVideoTap(post)}
-                    className="absolute inset-0 cursor-pointer"
+                    className="absolute inset-0 cursor-pointer overflow-hidden"
                     style={{ backgroundImage: post.background }}
                     aria-label={`Vidéo de ${post.name} — double-cliquez pour aimer`}
                   >
-                    <span
-                      className="absolute -inset-1/2 animate-feed-drift bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.14),transparent_45%)]"
-                      aria-hidden
+                    <Image
+                      src={post.photo}
+                      alt={`${post.trade} au travail`}
+                      fill
+                      sizes="320px"
+                      className="animate-feed-zoom object-cover"
                     />
                     <span
-                      className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80"
+                      className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/85"
                       aria-hidden
                     />
                   </button>

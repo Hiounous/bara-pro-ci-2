@@ -29,12 +29,16 @@ export function TalentFeedPreview() {
         ))}
       </RevealGroup>
 
-      <div className="mt-12 flex justify-center">
+      <div className="mt-12 flex flex-col items-center gap-4">
         <Button asChild variant="outline" size="lg">
           <Link href="/fonctionnalites">
             Découvrir toutes les fonctionnalités <ArrowRight />
           </Link>
         </Button>
+        <p className="text-center text-xs text-muted-foreground">
+          Aperçu illustratif — photos d&apos;illustration, profils fictifs. Les
+          vrais artisans arrivent au lancement.
+        </p>
       </div>
     </Section>
   );

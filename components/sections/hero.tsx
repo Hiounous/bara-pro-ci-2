@@ -136,7 +136,11 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="z-10 w-[58%] -translate-y-6"
             >
-              <TalentCard artisan={demoArtisans[0]} className="glow-brand" />
+              <TalentCard
+                artisan={demoArtisans[0]}
+                className="glow-brand"
+                priority
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 40, rotate: 4 }}
