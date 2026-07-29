@@ -8,12 +8,12 @@ import {
   HardHat,
   Mail,
   Search,
-  Send,
   Users,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { NewsletterTestButton } from "@/components/admin/newsletter-test-button";
 import { getCurrentUser } from "@/lib/supabase/server";
 import { getSupabaseAdmin } from "@/lib/supabase/admin";
 import { isAdminEmail } from "@/lib/admin";
@@ -116,11 +116,7 @@ export default async function AdminPage() {
               <Eye className="size-4" /> Aperçu newsletter
             </a>
           </Button>
-          <Button asChild variant="green" size="sm">
-            <a href="/tableau-de-bord/admin/newsletter" target="_blank">
-              <Send className="size-4" /> M&apos;envoyer un test
-            </a>
-          </Button>
+          <NewsletterTestButton />
         </div>
       </div>
 
